@@ -1,6 +1,7 @@
 package com.example.springSecurity.controller;
 
 
+import com.example.springSecurity.DTO.LoginRequestDTO;
 import com.example.springSecurity.entity.Users;
 import com.example.springSecurity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping
 public class UsersController {
 
     @Autowired
@@ -20,6 +21,13 @@ public class UsersController {
     public String registerUser(@RequestBody Users user){
         userService.registerUser(user);
         return "user registered";
+    }
+
+
+    @PostMapping("/login")
+    public String login (@RequestBody Users user){
+
+        return userService.verify(user);
     }
 
 }
