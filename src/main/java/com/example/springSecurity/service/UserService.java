@@ -32,7 +32,7 @@ userRepository.save(user);
 
     }
 
-    public String verify(Users user) {
+    public String verify(LoginRequestDTO user) {
 
         Authentication authentication= authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),user.getPassword()));
 if(authentication.isAuthenticated()){
